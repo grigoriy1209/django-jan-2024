@@ -10,21 +10,6 @@ from first.serializers import CarSerializer
 from first.models import CarModel
 
 
-class CarListCreateView(GenericAPIView):
-
-    def get(self, *args, **kwargs):
-        queryset = CarModel.objects.filter.order_by('price')
-        queryset = CarModel.objects.filter.order_by('-price')
-        queryset = CarModel.objects.filter.order_by('-brand')
-        queryset = CarModel.objects.filter.order_by('brand')
-        queryset = CarModel.objects.filter.order_by('year')
-        queryset = CarModel.objects.filter.order_by('-year')
-
-        queryset = CarModel.objects.all()
-        serializer = CarSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
 class CarListCreateView(ListCreateAPIView):
     serializer_class = CarSerializer
     queryset = CarModel.objects.all()
